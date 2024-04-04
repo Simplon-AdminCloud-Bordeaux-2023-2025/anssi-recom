@@ -1,6 +1,3 @@
----
-# tasks file for anssi-recom-minimal
-
 - name: Ensure dnf-automatic is installed
   package:
     name: dnf-automatic
