@@ -150,22 +150,6 @@
       - sudo_add_ignore_dot
 
 
-    # - name: Ensure noexec is enabled in /etc/sudoers
-    #   lineinfile:
-    #     path: /etc/sudoers
-    #     regexp: ^[\s]*Defaults.*\bnoexec\b.*$
-    #     line: Defaults noexec
-    #     validate: /usr/sbin/visudo -cf %s
-    #   tags:
-    #   - CCE-83747-6
-    #   - high_severity
-    #   - low_complexity
-    #   - low_disruption
-    #   - no_reboot_needed
-    #   - restrict_strategy
-    #   - sudo_add_noexec
-
-
     - name: Ensure requiretty is enabled in /etc/sudoers
       lineinfile:
         path: /etc/sudoers
@@ -180,8 +164,6 @@
       - no_reboot_needed
       - restrict_strategy
       - sudo_add_requiretty
-
-
 
 
 
@@ -306,27 +288,6 @@
       - no_reboot_needed
       - restrict_strategy
       - sudo_remove_nopasswd
-
-    # - name: Remove lines containing NOPASSWD from sudoers files
-    #   ansible.builtin.replace:
-    #     regexp: (^(?!#).*[\s]+NOPASSWD[\s]*\:.*$)
-    #     replace: '# \g<1>'
-    #     path: '{{ item.path }}'
-    #     validate: /usr/sbin/visudo -cf %s
-    #   with_items:
-    #   - path: /etc/sudoers
-    #   - '{{ sudoers.files }}'
-    #   tags:
-    #   - CCE-82197-5
-    #   - DISA-STIG-RHEL-08-010380
-    #   - NIST-800-53-CM-6(a)
-    #   - NIST-800-53-IA-11
-    #   - low_complexity
-    #   - low_disruption
-    #   - medium_severity
-    #   - no_reboot_needed
-    #   - restrict_strategy
-    #   - sudo_remove_nopasswd
 
 
     - name: Ensure dnf-automatic is installed
@@ -740,8 +701,6 @@
       - medium_severity
       - no_reboot_needed
       - timer_dnf-automatic_enabled
-
-
 
 
 
